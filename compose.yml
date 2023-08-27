@@ -1,0 +1,19 @@
+version: "2.3"
+services:
+  demo-container-db:
+    image: postgres:15
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: tr134sdfWE
+      POSTGRES_DB: postgres
+      DB_NAME: computer-shop
+    ports:
+      - "5442:5432"
+    networks:
+      - turreta_network
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+networks:
+  turreta_network:
+    driver: bridge
